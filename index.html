@@ -2,34 +2,34 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的第一个 GitHub Pages 网站</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #666;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Vue 示例</title>
+  <!-- 引入 Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
-  <h1>你好，GitHub Pages！</h1>
-  <p>这是我的第一个网页 🎉</p>
-  <p>你可以编辑 <code>index.html</code> 来更新内容。</p>
-  <p><a href="https://github.com" target="_blank">去 GitHub 看看</a></p>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <input v-model="message" placeholder="修改文字看看效果">
+    <button @click="reverseMessage">反转文字</button>
+  </div>
+
+  <script>
+    // 创建 Vue 应用
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: 'Hello Vue!'
+        }
+      },
+      methods: {
+        reverseMessage() {
+          this.message = this.message.split('').reverse().join('');
+        }
+      }
+    })
+
+    // 挂载到 #app
+    app.mount('#app')
+  </script>
 </body>
 </html>
